@@ -16,7 +16,7 @@ export const COLORS = {
   fondo: "#F5E5DE",
 
   // Color principal de marca: botones importantes, ícono, elementos activos
-  primario: "#FFFFDA",
+  primario: "#AAD0DA",
   // Versión clara del color principal, para fondos suaves (ej: barras llenas)
   primarioClaro: "#4C8C5B",
 
@@ -30,7 +30,7 @@ export const COLORS = {
   borde: "#E4E0D3",
 
   // Estados
-  exito: "#D9CDC3",
+  exito: "#AAD0DA",
   error: "#C1633E",
   errorFondo: "#FBEAE3",
 
