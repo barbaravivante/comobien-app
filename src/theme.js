@@ -26,7 +26,7 @@ export const COLORS = {
   textoTerciario: "#8B9689", // texto más tenue (ayuda, placeholders)
 
   // Tarjetas y bordes
-  fondoTarjeta: "#D4F1F2",
+  fondoTarjeta: "#FDF1F6",
   borde: "#E4E0D3",
 
   // Estados
