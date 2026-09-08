@@ -13,10 +13,10 @@
 
 export const COLORS = {
   // Fondo general de toda la app
-  fondo: "#EDEAE0",
+  fondo: "#F5E5DE",
 
   // Color principal de marca: botones importantes, ícono, elementos activos
-  primario: "#2F4A3C",
+  primario: "#FFFFDA",
   // Versión clara del color principal, para fondos suaves (ej: barras llenas)
   primarioClaro: "#4C8C5B",
 
@@ -30,7 +30,7 @@ export const COLORS = {
   borde: "#E4E0D3",
 
   // Estados
-  exito: "#4C8C5B",
+  exito: "#D9CDC3",
   error: "#C1633E",
   errorFondo: "#FBEAE3",
 
