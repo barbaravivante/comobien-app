@@ -1,4 +1,4 @@
-import { Home, UtensilsCrossed, Scale, Camera, User } from "lucide-react";
+import { Home, UtensilsCrossed, Scale, Camera, MapPin, User } from "lucide-react";
 import { COLORS } from "../theme";
 
 const TABS = [
@@ -6,6 +6,7 @@ const TABS = [
   { key: "comida", label: "Comida", icon: UtensilsCrossed },
   { key: "tiquet", label: "Tiquet", icon: Camera },
   { key: "peso", label: "Peso", icon: Scale },
+  { key: "cerca", label: "Cerca", icon: MapPin },
   { key: "perfil", label: "Perfil", icon: User },
 ];
 
@@ -22,10 +23,10 @@ export default function BottomNav({ active, onChange }) {
           <button
             key={key}
             onClick={() => onChange(key)}
-            className="flex flex-col items-center gap-1 px-2 py-1"
+            className="flex flex-col items-center gap-1 px-1 py-1"
           >
-            <Icon size={20} color={color} strokeWidth={isActive ? 2.4 : 2} />
-            <span className="text-[10.5px] font-semibold" style={{ color }}>
+            <Icon size={19} color={color} strokeWidth={isActive ? 2.4 : 2} />
+            <span className="text-[9.5px] font-semibold" style={{ color }}>
               {label}
             </span>
           </button>

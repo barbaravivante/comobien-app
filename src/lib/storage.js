@@ -85,3 +85,34 @@ export function addTicketResult(result) {
   localStorage.setItem(KEYS.ticketHistory, JSON.stringify(trimmed));
   return trimmed;
 }
+
+// Copia de seguridad: junta todo lo que vive en este celular (perfil, peso,
+// comidas y el historial de tiquets) en un solo archivo descargable, para
+// que la persona no pierda nada si cambia de celular o desinstala la app.
+export function exportAllData() {
+  return {
+    exportedAt: new Date().toISOString(),
+    app: "comobien",
+    profile: loadProfile(),
+    weightLog: loadWeightLog(),
+    foodLog: loadFoodLog(),
+    ticketHistory: loadTicketHistory(),
+  };
+}
+
+// Reemplaza todos los datos locales por los de una copia de seguridad
+// previamente exportada. Devuelve lo restaurado para que la app pueda
+// actualizar su estado en memoria sin necesidad de recargar la página.
+export function restoreAllData(data) {
+  const profile = data?.profile ?? null;
+  const weightLog = Array.isArray(data?.weightLog) ? data.weightLog : [];
+  const foodLog = data?.foodLog && typeof data.foodLog === "object" ? data.foodLog : {};
+  const ticketHistory = Array.isArray(data?.ticketHistory) ? data.ticketHistory : [];
+
+  if (profile) localStorage.setItem(KEYS.profile, JSON.stringify(profile));
+  localStorage.setItem(KEYS.weightLog, JSON.stringify(weightLog));
+  localStorage.setItem(KEYS.foodLog, JSON.stringify(foodLog));
+  localStorage.setItem(KEYS.ticketHistory, JSON.stringify(ticketHistory));
+
+  return { profile, weightLog, foodLog, ticketHistory };
+}

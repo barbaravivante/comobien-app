@@ -13,24 +13,24 @@
 
 export const COLORS = {
   // Fondo general de toda la app
-  fondo: "#F5E5DE",
+  fondo: "#EDEAE0",
 
   // Color principal de marca: botones importantes, ícono, elementos activos
-  primario: "#AAD0DA",
+  primario: "#2F4A3C",
   // Versión clara del color principal, para fondos suaves (ej: barras llenas)
   primarioClaro: "#4C8C5B",
 
   // Textos
   textoPrincipal: "#1E2A22", // títulos y texto importante
   textoSecundario: "#6B7A70", // texto de apoyo, descripciones
-  textoTerciario: "#1E2A22", // texto más tenue (ayuda, placeholders)
+  textoTerciario: "#8B9689", // texto más tenue (ayuda, placeholders)
 
   // Tarjetas y bordes
-  fondoTarjeta: "#FDF1F6",
+  fondoTarjeta: "#FFFFFF",
   borde: "#E4E0D3",
 
   // Estados
-  exito: "#AAD0DA",
+  exito: "#4C8C5B",
   error: "#C1633E",
   errorFondo: "#FBEAE3",
 
@@ -43,8 +43,8 @@ export const COLORS = {
   navInactivo: "#B7BEB3",
 
   // Textos dentro de la caja verde de "Recomendación del día"
-  textoSobreVerde: "#FFFFFF",
-  destacadoSobreVerde: "#DCE5DE",
+  textoSobreVerde: "#DCE5DE",
+  destacadoSobreVerde: "#B8E0C4",
 };
 
 // Tipografía: título con "serif" (Fraunces) y el resto de la app con

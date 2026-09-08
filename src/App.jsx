@@ -5,6 +5,7 @@ import FoodLog from "./components/FoodLog";
 import WeightLog from "./components/WeightLog";
 import TicketScan from "./components/TicketScan";
 import Profile from "./components/Profile";
+import NearbyStores from "./components/NearbyStores";
 import BottomNav from "./components/BottomNav";
 import { COLORS, FONT_IMPORT_URL, FONT_TEXTO } from "./theme";
 import {
@@ -72,6 +73,12 @@ export default function App() {
     setProfile(p);
   };
 
+  const handleRestoreAll = (restored) => {
+    if (restored?.profile) setProfile(restored.profile);
+    setWeightLog(restored?.weightLog || []);
+    setFoodLog(restored?.foodLog || {});
+  };
+
   return (
     <div className="min-h-screen w-full" style={{ backgroundColor: COLORS.fondo, fontFamily: FONT_TEXTO }}>
       <style>{`@import url('${FONT_IMPORT_URL}');`}</style>
@@ -82,7 +89,8 @@ export default function App() {
       {tab === "comida" && <FoodLog foodToday={foodToday} onAdd={handleAddFood} onRemove={handleRemoveFood} />}
       {tab === "peso" && <WeightLog profile={profile} weightLog={weightLog} onAdd={handleAddWeight} />}
       {tab === "tiquet" && <TicketScan objetivo={profile.objetivo} />}
-      {tab === "perfil" && <Profile profile={profile} onSave={handleSaveProfile} />}
+      {tab === "cerca" && <NearbyStores />}
+      {tab === "perfil" && <Profile profile={profile} onSave={handleSaveProfile} onRestoreAll={handleRestoreAll} />}
 
       <BottomNav active={tab} onChange={setTab} />
     </div>
