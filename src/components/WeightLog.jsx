@@ -47,11 +47,11 @@ export default function WeightLog({ profile, weightLog, onAdd }) {
       {weightLog.length > 1 && (
         <div className="rounded-2xl p-4" style={{ backgroundColor: COLORS.fondoTarjeta, border: `1px solid ${COLORS.borde}` }}>
           <p className="mb-3 text-[12.5px] font-semibold" style={{ color: COLORS.textoSecundario }}>Evolución</p>
-          <div className="flex h-28 items-end gap-1.5">
+          <div className="flex h-28 items-stretch gap-1.5">
             {weightLog.slice(-14).map((e, i) => {
               const alturaPct = ((e.kg - min) / rango) * 80 + 15;
               return (
-                <div key={i} className="flex flex-1 flex-col items-center justify-end">
+                <div key={i} className="flex h-full flex-1 flex-col items-center justify-end">
                   <div
                     className="w-full rounded-t-sm"
                     style={{ height: `${alturaPct}%`, backgroundColor: COLORS.primarioClaro }}

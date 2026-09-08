@@ -5,6 +5,7 @@ import FoodLog from "./components/FoodLog";
 import WeightLog from "./components/WeightLog";
 import TicketScan from "./components/TicketScan";
 import Profile from "./components/Profile";
+import Tools from "./components/Tools";
 import NearbyStores from "./components/NearbyStores";
 import BottomNav from "./components/BottomNav";
 import { COLORS, FONT_IMPORT_URL, FONT_TEXTO } from "./theme";
@@ -90,7 +91,8 @@ export default function App() {
       {tab === "peso" && <WeightLog profile={profile} weightLog={weightLog} onAdd={handleAddWeight} />}
       {tab === "tiquet" && <TicketScan objetivo={profile.objetivo} />}
       {tab === "cerca" && <NearbyStores />}
-      {tab === "perfil" && <Profile profile={profile} onSave={handleSaveProfile} onRestoreAll={handleRestoreAll} />}
+      {tab === "perfil" && <Profile profile={profile} onSave={handleSaveProfile} onNavigate={setTab} />}
+      {tab === "herramientas" && <Tools onBack={() => setTab("perfil")} onRestoreAll={handleRestoreAll} />}
 
       <BottomNav active={tab} onChange={setTab} />
     </div>
