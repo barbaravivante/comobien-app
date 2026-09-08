@@ -44,7 +44,7 @@ export const COLORS = {
 
   // Textos dentro de la caja verde de "Recomendación del día"
   textoSobreVerde: "#DCE5DE",
-  destacadoSobreVerde: "#B8E0C4",
+  destacadoSobreVerde: "#DCE5DE",
 };
 
 // Tipografía: título con "serif" (Fraunces) y el resto de la app con
