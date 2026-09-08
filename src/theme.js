@@ -23,7 +23,7 @@ export const COLORS = {
   // Textos
   textoPrincipal: "#1E2A22", // títulos y texto importante
   textoSecundario: "#6B7A70", // texto de apoyo, descripciones
-  textoTerciario: "#8B9689", // texto más tenue (ayuda, placeholders)
+  textoTerciario: "#1E2A22", // texto más tenue (ayuda, placeholders)
 
   // Tarjetas y bordes
   fondoTarjeta: "#FDF1F6",
