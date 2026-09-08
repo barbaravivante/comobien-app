@@ -43,7 +43,7 @@ export const COLORS = {
   navInactivo: "#B7BEB3",
 
   // Textos dentro de la caja verde de "Recomendación del día"
-  textoSobreVerde: "#D9CDC3",
+  textoSobreVerde: "#FFFFFF",
   destacadoSobreVerde: "#DCE5DE",
 };
 
