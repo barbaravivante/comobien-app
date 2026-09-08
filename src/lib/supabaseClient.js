@@ -8,5 +8,24 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-export const supabase =
-  supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
+// Si VITE_SUPABASE_URL o VITE_SUPABASE_ANON_KEY están mal cargadas en Vercel
+// (por ejemplo, con un espacio de más, comillas, o sin el "https://"),
+// createClient() tira una excepción. Sin este try/catch, ese error rompía
+// TODA la app apenas arrancaba (pantalla en blanco, sin ningún aviso) — por
+// eso lo atajamos acá: si falla, la app sigue funcionando igual, solo que
+// sin el login por usuario/contraseña (LoginGate ya sabe mostrar un mensaje
+// claro y ofrecer el código de acceso como alternativa cuando `supabase` es
+// `null`).
+let supabaseClient = null;
+if (supabaseUrl && supabaseAnonKey) {
+  try {
+    supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
+  } catch (e) {
+    console.error(
+      "No se pudo inicializar Supabase: revisá que VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY estén bien cargadas en Vercel.",
+      e
+    );
+  }
+}
+
+export const supabase = supabaseClient;
