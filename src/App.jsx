@@ -87,7 +87,7 @@ export default function App() {
       {tab === "inicio" && (
         <Dashboard profile={profile} foodToday={foodToday} weightLog={weightLog} onNavigate={setTab} />
       )}
-      {tab === "comida" && <FoodLog foodToday={foodToday} onAdd={handleAddFood} onRemove={handleRemoveFood} />}
+      {tab === "comida" && <FoodLog foodToday={foodToday} profile={profile} onAdd={handleAddFood} onRemove={handleRemoveFood} />}
       {tab === "peso" && <WeightLog profile={profile} weightLog={weightLog} onAdd={handleAddWeight} />}
       {tab === "tiquet" && <TicketScan objetivo={profile.objetivo} />}
       {tab === "cerca" && <NearbyStores />}

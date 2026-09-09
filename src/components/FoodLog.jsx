@@ -1,15 +1,19 @@
 import { useMemo, useState } from "react";
-import { Search, Plus, X, ArrowLeft } from "lucide-react";
+import { Search, Plus, X, ArrowLeft, AlertTriangle } from "lucide-react";
 import { searchFoods, calcPorcion } from "../data/foods";
 import { GRUPOS } from "../data/foods";
+import { calcularMacros } from "../lib/calculations";
 import { COLORS, FONT_TITULOS } from "../theme";
 
-export default function FoodLog({ foodToday, onAdd, onRemove }) {
+export default function FoodLog({ foodToday, profile, onAdd, onRemove }) {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(null);
   const [gramos, setGramos] = useState("");
 
   const results = useMemo(() => (query ? searchFoods(query).slice(0, 20) : []), [query]);
+
+  const kcalObjetivo = useMemo(() => calcularMacros(profile).kcalObjetivo, [profile]);
+  const kcalHoy = useMemo(() => foodToday.reduce((acc, e) => acc + (e.kcal || 0), 0), [foodToday]);
 
   const handleSelect = (food) => {
     setSelected(food);
@@ -82,6 +86,15 @@ export default function FoodLog({ foodToday, onAdd, onRemove }) {
           </div>
         </div>
 
+        {kcalHoy + calc.kcal > kcalObjetivo && (
+          <div className="flex items-start gap-2 rounded-xl p-3" style={{ backgroundColor: COLORS.errorFondo }}>
+            <AlertTriangle size={16} color={COLORS.error} className="mt-0.5 shrink-0" />
+            <p className="text-[12.5px]" style={{ color: COLORS.error }}>
+              Con este alimento vas a superar tu objetivo diario ({kcalHoy + calc.kcal} / {kcalObjetivo} kcal).
+            </p>
+          </div>
+        )}
+
         <button
           onClick={handleConfirm}
           disabled={!g}
@@ -134,6 +147,14 @@ export default function FoodLog({ foodToday, onAdd, onRemove }) {
       {!query && (
         <div>
           <p className="mb-2 text-[12.5px] font-semibold" style={{ color: COLORS.textoSecundario }}>Hoy registraste</p>
+          {kcalHoy > kcalObjetivo && (
+            <div className="mb-2 flex items-start gap-2 rounded-xl p-3" style={{ backgroundColor: COLORS.errorFondo }}>
+              <AlertTriangle size={16} color={COLORS.error} className="mt-0.5 shrink-0" />
+              <p className="text-[12.5px]" style={{ color: COLORS.error }}>
+                Ya superaste tu objetivo diario ({kcalHoy} / {kcalObjetivo} kcal).
+              </p>
+            </div>
+          )}
           {foodToday.length === 0 && <p className="text-[13px]" style={{ color: COLORS.textoTerciario }}>Todavía no registraste ninguna comida hoy.</p>}
           <div className="flex flex-col gap-1.5">
             {foodToday
