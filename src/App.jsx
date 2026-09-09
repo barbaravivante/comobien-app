@@ -91,8 +91,8 @@ export default function App() {
       {tab === "peso" && <WeightLog profile={profile} weightLog={weightLog} onAdd={handleAddWeight} />}
       {tab === "tiquet" && <TicketScan objetivo={profile.objetivo} />}
       {tab === "cerca" && <NearbyStores />}
-      {tab === "perfil" && <Profile profile={profile} onSave={handleSaveProfile} onNavigate={setTab} />}
-      {tab === "herramientas" && <Tools onBack={() => setTab("perfil")} onRestoreAll={handleRestoreAll} />}
+      {tab === "perfil" && <Profile profile={profile} onSave={handleSaveProfile} />}
+      {tab === "herramientas" && <Tools onRestoreAll={handleRestoreAll} />}
 
       <BottomNav active={tab} onChange={setTab} />
     </div>

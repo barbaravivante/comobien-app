@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, Download, Upload, MessageCircle, Mail, HelpCircle, ChevronRight } from "lucide-react";
+import { Download, Upload, MessageCircle, Mail, HelpCircle, ChevronRight } from "lucide-react";
 import { exportAllData, restoreAllData } from "../lib/storage";
 import { COLORS, FONT_TITULOS } from "../theme";
 
@@ -11,7 +11,7 @@ const CONTACT = {
   whatsappNumber: "5492604355320",
 };
 
-export default function Tools({ onBack, onRestoreAll }) {
+export default function Tools({ onRestoreAll }) {
   const [backupStatus, setBackupStatus] = useState(null); // {type: 'ok'|'error', text}
   const [confirmingRestore, setConfirmingRestore] = useState(false);
   const [pendingData, setPendingData] = useState(null);
@@ -55,11 +55,6 @@ export default function Tools({ onBack, onRestoreAll }) {
 
   return (
     <div className="flex flex-col gap-5 px-5 pb-28 pt-6">
-      <div className="flex items-center gap-2">
-        <button onClick={onBack} className="flex items-center gap-1.5 text-[13px] font-semibold" style={{ color: COLORS.textoSecundario }}>
-          <ArrowLeft size={16} /> Volver
-        </button>
-      </div>
       <h2 className="text-[19px]" style={{ fontFamily: FONT_TITULOS, fontWeight: 600, color: COLORS.textoPrincipal }}>
         Herramientas
       </h2>

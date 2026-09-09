@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Wrench, ChevronRight } from "lucide-react";
 import { ACTIVIDAD_FACTORES, OBJETIVOS, calcularMacros, calcularIMC, clasificarIMC, validarDatosCuerpo } from "../lib/calculations";
 import { COLORS, FONT_TITULOS } from "../theme";
 
@@ -8,7 +7,7 @@ const inputClass = "w-full rounded-xl border px-4 py-3 text-[15px] outline-none"
 const labelStyle = { color: COLORS.textoSecundario };
 const labelClass = "text-[12.5px] font-semibold mb-1.5 block";
 
-export default function Profile({ profile, onSave, onNavigate }) {
+export default function Profile({ profile, onSave }) {
   const [form, setForm] = useState(profile);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
@@ -154,24 +153,6 @@ export default function Profile({ profile, onSave, onNavigate }) {
           {saved ? "✓ Guardado" : "Guardar cambios"}
         </button>
       </div>
-
-      <button
-        onClick={() => onNavigate?.("herramientas")}
-        className="flex items-center gap-3 rounded-2xl p-4 active:scale-[0.98] transition-transform"
-        style={{ backgroundColor: COLORS.fondoTarjeta, border: `1px solid ${COLORS.borde}` }}
-      >
-        <div
-          className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full"
-          style={{ backgroundColor: COLORS.fondo }}
-        >
-          <Wrench size={16} color={COLORS.primario} />
-        </div>
-        <div className="min-w-0 flex-1 text-left">
-          <p className="text-[13px] font-bold" style={{ color: COLORS.textoPrincipal }}>Herramientas</p>
-          <p className="text-[11.5px]" style={{ color: COLORS.textoSecundario }}>Guía de uso, copia de seguridad y contacto</p>
-        </div>
-        <ChevronRight size={16} color={COLORS.navInactivo} />
-      </button>
 
       <p className="text-center text-[11px] leading-relaxed" style={{ color: COLORS.textoTerciario }}>
         ComoBien no reemplaza el consejo de un/a profesional de la nutrición o la medicina.
